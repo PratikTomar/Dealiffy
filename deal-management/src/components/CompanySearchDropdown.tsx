@@ -1,10 +1,11 @@
 import React from 'react';
 import type { SuggestionsProps } from '../types';
 
-const CompanySearchDropdown: React.FC<SuggestionsProps> = ({ title, key, setFormData, setShowSuggestions, formData, skipNextFetch }) => {
+const CompanySearchDropdown: React.FC<SuggestionsProps> = ({ title, id, setFormData, setShowSuggestions, formData, skipNextFetch }) => {
+
     return (
         <li
-            key={key}
+            key={id}
             onClick={() => {
                 skipNextFetch.current = true
                 setFormData({ ...formData, companyName: title });

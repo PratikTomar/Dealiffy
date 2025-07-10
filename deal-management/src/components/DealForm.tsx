@@ -97,7 +97,7 @@ const DealForm = () => {
         {showSuggestions && data?.length > 0 && formData.companyName !== "" && (
           <ul className="border border-t-0 r-0 mt-1 bg-white max-h-40 overflow-y-auto">
             {data?.map((suggestions: any, id: number) => (
-              <CompanySearchDropdown key={id} title={suggestions.title} setFormData={setFormData} setShowSuggestions={setShowSuggestions} formData={formData} skipNextFetch={skipNextFetch} />
+              <CompanySearchDropdown id={id} title={suggestions.title} setFormData={setFormData} setShowSuggestions={setShowSuggestions} formData={formData} skipNextFetch={skipNextFetch} />
             ))}
           </ul>
         )}

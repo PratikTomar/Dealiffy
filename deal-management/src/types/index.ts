@@ -10,7 +10,7 @@ export type DealFormData = {
 
 export type SuggestionsProps = {
     title: string
-    key:number
+    id:number
     setShowSuggestions: React.Dispatch<React.SetStateAction<boolean>>
     setFormData: React.Dispatch<React.SetStateAction<DealFormData>>
     formData: DealFormData
