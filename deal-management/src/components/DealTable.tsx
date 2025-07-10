@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import type { DealFormData } from "../types";
 import { toast } from "react-toastify";
+import type { DealFormData } from "../types";
 
 const DealTable = () => {
     const [deals, setDeals] = useState<DealFormData[]>([]);
@@ -24,6 +24,9 @@ const DealTable = () => {
     );
 
     const handleSort = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        if (deals.length === 1) {
+            return toast.error("Atleast 2 deals required for sorting");
+        }
         const sortBy = e.target.value;
         let sortedDeals = [...deals];
         if (sortBy === "name") {
@@ -47,6 +50,7 @@ const DealTable = () => {
         <div className="p-6 max-w-6xl mx-auto">
             <div className="flex justify-between items-center mb-6">
                 <h1 className="text-2xl font-semibold">Deals Dashboard</h1>
+                {deals.length > 0 && (
                 <select name="sortBy" id="sortBy" className="w-48 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200 cursor-pointer" onChange={handleSort}>
                     <option value="sortBy" disabled selected>Sort By (Ascending) </option>
                     <option value="name">Name</option>
@@ -54,6 +58,7 @@ const DealTable = () => {
                     <option value="sortByPurpose">Sort By Purpose</option>
                     <option value="sortByAmount">Sort By Loan Amount</option>
                 </select>
+                )}
             </div>
 
             {deals.length > 0 && (
